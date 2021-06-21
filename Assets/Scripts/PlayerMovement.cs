@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
-
     public Animator animator;
+
+
+
 
     Vector2 movement;
 
@@ -19,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        // Movement and movement animation 
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -27,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
 
+
     }
 
     void FixedUpdate()
     {
+        // Position update through movement Vector
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
     }
