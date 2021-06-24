@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;
 
-
+    private Vector2 shooting;
 
 
 
@@ -52,14 +52,19 @@ public class PlayerMovement : MonoBehaviour
 
         // Shooting and shooting animation
 
-        float shootHor = Input.GetAxis("ShootHorizontal");
-        float shootVert = Input.GetAxis("ShootVertical");
+        // float shootHor = Input.GetAxis("ShootHorizontal");
+        // float shootVert = Input.GetAxis("ShootVertical");
 
-        animator.SetFloat("ShootHorizontal", shootHor);
-        animator.SetFloat("ShootVertical", shootVert);
+        shooting.x = Input.GetAxisRaw("ShootHorizontal");
+        shooting.y = Input.GetAxisRaw("ShootVertical");
 
-        if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + fireDelay) {
-            Shoot(shootHor, shootVert);
+        animator.SetFloat("ShootHorizontal", shooting.x);
+        animator.SetFloat("ShootVertical", shooting.y);
+
+        animator.SetFloat("Shoot", shooting.sqrMagnitude);
+
+        if ((shooting.x != 0 || shooting.y != 0) && Time.time > lastFire + fireDelay) {
+            Shoot(shooting.x, shooting.y);
             lastFire = Time.time;
         }
 
