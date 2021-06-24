@@ -11,9 +11,24 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
 
+    public GameObject bulletPrefab;
+
+    public float bulletSpeed;
+
+    public float fireDelay;
+
+    private float lastFire;
 
 
-    Vector2 movement;
+
+
+
+
+
+
+
+
+    private Vector2 movement;
 
 
 
@@ -34,7 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
+        // Shooting 
 
+        float shootHor = Input.GetAxis("ShootHorizontal");
+        float shootVert = Input.GetAxis("ShootVertical");
+        íf((shootHor != 0 || shootVert != 0) && Time.time > lastFire + fireDelay){
+
+        }
 
     }
 
