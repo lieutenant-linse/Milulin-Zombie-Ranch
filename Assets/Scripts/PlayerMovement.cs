@@ -50,15 +50,19 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
 
-        // Shooting 
+        // Shooting and shooting animation
 
         float shootHor = Input.GetAxis("ShootHorizontal");
         float shootVert = Input.GetAxis("ShootVertical");
+
+        animator.SetFloat("ShootHorizontal", shootHor);
+        animator.SetFloat("ShootVertical", shootVert);
 
         if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + fireDelay) {
             Shoot(shootHor, shootVert);
             lastFire = Time.time;
         }
+
 
     }
 
