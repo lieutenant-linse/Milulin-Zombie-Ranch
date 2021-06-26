@@ -27,6 +27,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 randomDir;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
