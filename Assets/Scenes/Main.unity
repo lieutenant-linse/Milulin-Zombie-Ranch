@@ -15357,7 +15357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currState: 0
   range: 10
-  speed: 1
+  speed: 5
 --- !u!70 &1019196251
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
