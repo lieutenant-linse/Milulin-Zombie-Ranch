@@ -17,6 +17,12 @@ public class EnemyController : MonoBehaviour
 
     public EnemyState currState = EnemyState.Wander;
 
+    public Rigidbody2D rb_enemy;
+
+    public Animator animator;
+
+
+
     public float range;
 
     public float speed;
@@ -25,7 +31,14 @@ public class EnemyController : MonoBehaviour
 
     private bool dead = false;
 
-    private Vector3 randomDir;
+
+
+    //private Vector3 randomDir;
+
+    private Vector2 movement;
+    private Vector2 follow_movement;
+
+
 
 
 
@@ -59,7 +72,28 @@ public class EnemyController : MonoBehaviour
         {
             currState = EnemyState.Wander;
         }
-    }
+
+
+        //Defining the values for the animation of the enemy
+        if (movement != Vector2.zero)
+        {
+            animator.SetFloat("Horizontal_Enemy", movement.x);
+            animator.SetFloat("Vertical_Enemy", movement.y);
+        }
+
+        animator.SetFloat("Speed_Enemy", movement.sqrMagnitude);
+
+        if (follow_movement != Vector2.zero)
+        {
+            animator.SetFloat("Horizontal_Enemy", follow_movement.x);
+            animator.SetFloat("Vertical_Enemy", follow_movement.y);
+
+            animator.SetFloat("Speed_Enemy", follow_movement.sqrMagnitude);
+        }
+
+        
+    
+}
 
     private bool IsPlayerInRange(float range)
     {
@@ -69,10 +103,15 @@ public class EnemyController : MonoBehaviour
     private IEnumerator ChooseDirection()
     {
         chooseDir = true;
-        yield return new WaitForSeconds(Random.Range(2f, 8f));
-        randomDir = new Vector3(0, 0, Random.Range(0, 360));
-        Quaternion nextRotation = Quaternion.Euler(randomDir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Random.Range(.5f, 2.5f));
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
+
+        //new way to move randonmly to map to animation
+        follow_movement = Vector2.zero;
+        movement = new Vector2(Random.Range(-1,2), Random.Range(-1, 2));
+        
+
+        //Quaternion nextRotation = Quaternion.Euler(randomDir);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Random.Range(.5f, 2.5f));
         chooseDir = false;
     }
 
@@ -83,7 +122,10 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(ChooseDirection());
         }
 
-        transform.position += -transform.right * speed * Time.deltaTime;
+        // transform.position += -transform.right * speed * Time.deltaTime;
+
+        rb_enemy.MovePosition(rb_enemy.position + movement * speed * Time.fixedDeltaTime);
+
 
         if (IsPlayerInRange(range))
         {
@@ -94,7 +136,13 @@ public class EnemyController : MonoBehaviour
     void Follow()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        follow_movement.x = player.transform.position.x;
+        follow_movement.y = player.transform.position.y;
+
     }
-    
+
+
+
 }
 
