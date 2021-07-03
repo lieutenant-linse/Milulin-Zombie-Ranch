@@ -142,6 +142,8 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    // on Collision Death - Sheesh
+
     public void Death()
     {
         Destroy(gameObject);
