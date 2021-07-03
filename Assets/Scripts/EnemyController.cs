@@ -142,6 +142,11 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
+
 
 
 }
