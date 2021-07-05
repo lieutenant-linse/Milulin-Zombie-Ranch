@@ -1,0 +1,5 @@
+Unsere Idee ist, dass der Spieler von mehreren Gegnern, die in Zeitintervallen spawnen, weglaufen, bzw. sie erschiessen müssen.
+ Wir werden uns noch entscheiden, ob man eine gewisse Zeit überleben muss um das Spiel zu "bestehen" oder ob so lange spielt bis man 3 mal getroffen wird, 
+und die Zeit sozusagen auch als "Highscore" funktioniert. Ausserdem wird es für das Besiegen von Gegnern Punkte geben, die aufaddiert werden. 
+
+Haltet ihr die Idee generell für gut und umsetzbar? Habt ihr sonst noch Feedback für uns?
