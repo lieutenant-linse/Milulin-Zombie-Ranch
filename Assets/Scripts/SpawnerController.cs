@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public GameObject EnemyPrefab;
+    public GameObject EnemyPrefab2;
     public float Radius = 1;
 
     public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
@@ -46,6 +47,7 @@ public class SpawnerController : MonoBehaviour
         
 
         Instantiate(EnemyPrefab, pos, Quaternion.identity);
+        Instantiate(EnemyPrefab2, pos, Quaternion.identity);
     }
 
     private void OnDrawGizmos()

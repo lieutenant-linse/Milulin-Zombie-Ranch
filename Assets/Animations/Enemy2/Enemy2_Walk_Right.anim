@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_2_Walk_Right
+  m_Name: Enemy2_Walk_Right
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -47,8 +47,6 @@ AnimationClip:
       value: {fileID: 6458876381897094654, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
     - time: 1.0833334
       value: {fileID: 5826787647528116650, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
-    - time: 1.1666666
-      value: {fileID: -143677419117749805, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -82,13 +80,12 @@ AnimationClip:
     - {fileID: 2984995491668520718, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
     - {fileID: 6458876381897094654, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
     - {fileID: 5826787647528116650, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
-    - {fileID: -143677419117749805, guid: cf1f9d09bdcb1ec4faa0d345e2230da7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.25
+    m_StopTime: 1.1666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

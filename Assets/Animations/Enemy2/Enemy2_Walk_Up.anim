@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_2_Walk_Up
+  m_Name: Enemy2_Walk_Up
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -47,8 +47,6 @@ AnimationClip:
       value: {fileID: 7059778895143242298, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
     - time: 1.0833334
       value: {fileID: 2753116661165116292, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
-    - time: 1.1666666
-      value: {fileID: 2550818591197243069, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -82,13 +80,12 @@ AnimationClip:
     - {fileID: -1883267628923888817, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
     - {fileID: 7059778895143242298, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
     - {fileID: 2753116661165116292, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
-    - {fileID: 2550818591197243069, guid: ee7d69dcc05bd9640bcffeeb19035eb4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.25
+    m_StopTime: 1.1666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
