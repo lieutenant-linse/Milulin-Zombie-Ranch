@@ -5,7 +5,9 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public GameObject EnemyPrefab;
+
     public GameObject EnemyPrefab2;
+
     public float Radius = 1;
 
     public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
@@ -33,18 +35,18 @@ public class SpawnerController : MonoBehaviour
     }
 
     private IEnumerator SpawnTimer()
-    {
+    { 
+        while (true) {
         yield return new WaitForSeconds(Random.Range(1f, 3f));
         SpawnObjectAtRandom();
+        }
     }
 
-    void SpawnObjectAtRandom()
+    public void SpawnObjectAtRandom()
     {
         Vector3 randomPos = Random.insideUnitCircle * Radius;
 
         Debug.Log(randomPos);
-
-        
 
         Instantiate(EnemyPrefab, pos, Quaternion.identity);
         Instantiate(EnemyPrefab2, pos, Quaternion.identity);
