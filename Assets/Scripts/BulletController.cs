@@ -34,5 +34,12 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
 
         }
+
+        if (collision.tag == "Enemy2")
+        {
+            collision.gameObject.GetComponent<EnemyController2>().Death();
+            Destroy(gameObject);
+
+        }
     }
 }
