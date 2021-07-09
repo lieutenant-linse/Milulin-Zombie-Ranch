@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
 
 
+
     public float attackRange;
 
     public bool coolDownAttack;
@@ -85,15 +86,19 @@ public class EnemyController : MonoBehaviour
 
 
         //Defining the values for the animation of the enemy
-        if (movement != Vector2.zero)
+        if (movement != Vector2.zero && currState != EnemyState.Die)
         {
             animator.SetFloat("Horizontal_Enemy", movement.x);
             animator.SetFloat("Vertical_Enemy", movement.y);
         }
 
-        animator.SetFloat("Speed_Enemy", movement.sqrMagnitude);
+        if(currState != EnemyState.Die)
+        {
+            animator.SetFloat("Speed_Enemy", movement.sqrMagnitude);
+        }
+        
 
-        if (follow_movement != Vector2.zero)
+        if (follow_movement != Vector2.zero && currState != EnemyState.Die)
         {
             animator.SetFloat("Horizontal_Enemy", follow_movement.x);
             animator.SetFloat("Vertical_Enemy", follow_movement.y);
@@ -101,12 +106,13 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Speed_Enemy", follow_movement.sqrMagnitude);
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState.Die)
         {
             currState = EnemyState.Attack;
         }
-    
-}
+
+
+    }
 
     private bool IsPlayerInRange(float range)
     {
@@ -175,6 +181,15 @@ public class EnemyController : MonoBehaviour
 
     public void Death()
     {
+        animator.SetTrigger("Death_Enemy");
+        currState = EnemyState.Die;
+        StartCoroutine(DeathDelay());
+
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 

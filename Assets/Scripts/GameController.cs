@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
+
     public static GameController instance;
 
     private static int health = 3;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
         {
             instance = this;
         }
+
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class GameController : MonoBehaviour
         health -= damage;
 
         Debug.Log("Health: " + health);
+
 
         if (Health <= 0)
         {

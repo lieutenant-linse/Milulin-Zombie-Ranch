@@ -85,15 +85,18 @@ public class EnemyController2 : MonoBehaviour
 
 
         //Defining the values for the animation of the enemy
-        if (movement != Vector2.zero)
+        if (movement != Vector2.zero && currState != EnemyState2.Die)
         {
             animator.SetFloat("Horizontal_Enemy_2", movement.x);
             animator.SetFloat("Vertical_Enemy_2", movement.y);
         }
+        if(currState != EnemyState2.Die)
+        {
+            animator.SetFloat("Speed_Enemy_2", movement.sqrMagnitude);
+        }
+        
 
-        animator.SetFloat("Speed_Enemy_2", movement.sqrMagnitude);
-
-        if (follow_movement != Vector2.zero)
+        if (follow_movement != Vector2.zero && currState != EnemyState2.Die)
         {
             animator.SetFloat("Horizontal_Enemy_2", follow_movement.x);
             animator.SetFloat("Vertical_Enemy_2", follow_movement.y);
@@ -101,7 +104,7 @@ public class EnemyController2 : MonoBehaviour
             animator.SetFloat("Speed_Enemy_2", follow_movement.sqrMagnitude);
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState2.Die)
         {
             currState = EnemyState2.Attack;
         }
@@ -172,10 +175,17 @@ public class EnemyController2 : MonoBehaviour
         coolDownAttack = false;
     }
 
-    // on Collision Death - Sheesh
-
     public void Death()
     {
+        animator.SetTrigger("Death_Enemy2");
+        currState = EnemyState2.Die;
+        StartCoroutine(DeathDelay());
+
+    }
+
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 

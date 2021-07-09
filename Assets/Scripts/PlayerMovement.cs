@@ -21,13 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
     private Vector2 movement;
 
     private Vector2 shooting;
@@ -88,5 +81,10 @@ public class PlayerMovement : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) * bulletSpeed : Mathf.Ceil(y) * bulletSpeed,
             0
             );
+    }
+
+    void GetHit()
+    {
+        animator.SetTrigger("Player_Hit");
     }
 }

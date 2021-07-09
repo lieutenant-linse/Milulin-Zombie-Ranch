@@ -50,6 +50,9 @@ MonoBehaviour:
   currState: 0
   rb_enemy: {fileID: 1594760496695693543}
   animator: {fileID: 1594760496695693545}
+  attackRange: 1
+  coolDownAttack: 0
+  attackDelay: 3
   range: 7
   speed: 2
 --- !u!212 &1594760496695693542
