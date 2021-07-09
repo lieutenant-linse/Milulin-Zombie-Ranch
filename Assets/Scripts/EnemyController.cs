@@ -7,7 +7,8 @@ public enum EnemyState
 {
     Wander,
     Follow,
-    Die
+    Die,
+    Attack
 };
 
 public class EnemyController : MonoBehaviour
@@ -22,6 +23,11 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
 
 
+    public float attackRange;
+
+    public bool coolDownAttack;
+
+    public float attackDelay;
 
     public float range;
 
@@ -62,6 +68,10 @@ public class EnemyController : MonoBehaviour
                 break;
             case (EnemyState.Die):
                 break;
+            case (EnemyState.Attack):
+                Attack();
+                break;
+
         }
 
         if(IsPlayerInRange(range) && currState != EnemyState.Die)
@@ -91,7 +101,10 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Speed_Enemy", follow_movement.sqrMagnitude);
         }
 
-        
+        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        {
+            currState = EnemyState.Attack;
+        }
     
 }
 
@@ -142,12 +155,30 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void Attack()
+    {
+        if(!coolDownAttack)
+        {
+            GameController.DamagePlayer(1);
+            StartCoroutine(CoolDown());
+        } 
+    }
+
+    private IEnumerator CoolDown()
+    {
+        coolDownAttack = true;
+        yield return new WaitForSeconds(attackDelay);
+        coolDownAttack = false;
+    }
+
     // on Collision Death - Sheesh
 
     public void Death()
     {
         Destroy(gameObject);
     }
+
+    
 
 
 
