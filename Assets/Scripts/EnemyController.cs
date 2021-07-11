@@ -16,6 +16,9 @@ public class EnemyController : MonoBehaviour
 
     GameObject player;
 
+    public Animator playerAnim;
+
+
     public EnemyState currState = EnemyState.Wander;
 
     public Rigidbody2D rb_enemy;
@@ -46,13 +49,17 @@ public class EnemyController : MonoBehaviour
     private Vector2 follow_movement;
 
 
-
+    private void Awake()
+    {
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -167,6 +174,7 @@ public class EnemyController : MonoBehaviour
         {
             GameController.DamagePlayer(1);
             StartCoroutine(CoolDown());
+            StartCoroutine(PlayerHitAnimation());
         } 
     }
 
@@ -177,6 +185,12 @@ public class EnemyController : MonoBehaviour
         coolDownAttack = false;
     }
 
+    private IEnumerator PlayerHitAnimation()
+    {
+        playerAnim.SetBool("Player_Hit", true);
+        yield return new WaitForSeconds(0.5f);
+        playerAnim.SetBool("Player_Hit", false);
+    }
     // on Collision Death - Sheesh
 
     public void Death()

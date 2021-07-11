@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
-
     public static GameController instance;
 
     private static int health = 3;

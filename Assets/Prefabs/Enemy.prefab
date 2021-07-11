@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe820c91a9dc4b69abd5f47457bb043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnim: {fileID: 0}
   currState: 0
   rb_enemy: {fileID: 3936099037767913889}
   animator: {fileID: 3936099037767913888}

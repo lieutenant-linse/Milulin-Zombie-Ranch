@@ -83,8 +83,4 @@ public class PlayerMovement : MonoBehaviour
             );
     }
 
-    void GetHit()
-    {
-        animator.SetTrigger("Player_Hit");
-    }
 }
