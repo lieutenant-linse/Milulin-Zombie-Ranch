@@ -177,14 +177,13 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(PlayerHitAnimation());
         } 
     }
+
     private IEnumerator PlayerHitAnimation()
     {
         playerAnim.SetBool("Player_Hit", true);
         yield return new WaitForSeconds(0.5f);
         playerAnim.SetBool("Player_Hit", false);
     }
-
-
 
     private IEnumerator CoolDown()
     {

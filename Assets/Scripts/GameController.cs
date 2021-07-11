@@ -50,7 +50,6 @@ public class GameController : MonoBehaviour
     {
         health -= damage;
 
-
         if (Health <= 0)
         {
             KillPlayer();
@@ -62,6 +61,8 @@ public class GameController : MonoBehaviour
     {
         health = Mathf.Min(maxHealth, health + healAmount);
     }
+
+
 
     private static void KillPlayer()
     {
