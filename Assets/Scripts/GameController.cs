@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
+    public static Animator playerAnim;
 
     public static GameController instance;
 
@@ -36,7 +37,7 @@ public class GameController : MonoBehaviour
         {
             instance = this;
         }
-
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,7 +53,6 @@ public class GameController : MonoBehaviour
 
         if (Health <= 0)
         {
-
             KillPlayer();
         }
     }
@@ -65,10 +65,10 @@ public class GameController : MonoBehaviour
 
     private static void KillPlayer()
     {
+        playerAnim.SetBool("Player_Death", true);
 
-        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        // Hier muss jetzt zum Game-Over Screen übergeleitet werden?
+
+        //Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
-
-
-    
 }
