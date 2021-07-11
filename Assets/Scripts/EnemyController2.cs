@@ -199,7 +199,7 @@ public class EnemyController2 : MonoBehaviour
 
     private IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }
 

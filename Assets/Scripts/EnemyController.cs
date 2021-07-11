@@ -177,6 +177,14 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(PlayerHitAnimation());
         } 
     }
+    private IEnumerator PlayerHitAnimation()
+    {
+        playerAnim.SetBool("Player_Hit", true);
+        yield return new WaitForSeconds(0.5f);
+        playerAnim.SetBool("Player_Hit", false);
+    }
+
+
 
     private IEnumerator CoolDown()
     {
@@ -185,12 +193,7 @@ public class EnemyController : MonoBehaviour
         coolDownAttack = false;
     }
 
-    private IEnumerator PlayerHitAnimation()
-    {
-        playerAnim.SetBool("Player_Hit", true);
-        yield return new WaitForSeconds(0.5f);
-        playerAnim.SetBool("Player_Hit", false);
-    }
+
     // on Collision Death - Sheesh
 
     public void Death()
@@ -203,7 +206,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }
 
