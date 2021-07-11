@@ -11,6 +11,7 @@ public class SpawnerController : MonoBehaviour
     public float Radius = 1;
 
     public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
+    public Vector3 pos2 = new Vector3(-33f, -7f, 0f);
 
     public float spawnDelay;
 
@@ -36,21 +37,31 @@ public class SpawnerController : MonoBehaviour
 
     private IEnumerator SpawnTimer()
     { 
-        while (true) {
-        yield return new WaitForSeconds(Random.Range(5f, 10f));
-        SpawnObjectAtRandom();
+        while (true) 
+        {
+            yield return new WaitForSeconds(Random.Range(5f, 10f));
+            SpawnObjectAtRandom();
+
+            yield return new WaitForSeconds(Random.Range(5f, 10f));
+            SpawnObjectAtRandom2();
         }
     }
 
     public void SpawnObjectAtRandom()
     {
-        Vector3 randomPos = Random.insideUnitCircle * Radius;
+        //Vector3 randomPos = Random.insideUnitCircle * Radius;
 
-        Debug.Log(randomPos);
+        //Debug.Log(randomPos);
 
         Instantiate(EnemyPrefab, pos, Quaternion.identity);
-        Instantiate(EnemyPrefab2, pos, Quaternion.identity);
     }
+
+
+    public void SpawnObjectAtRandom2()
+    {
+        Instantiate(EnemyPrefab2, pos2, Quaternion.identity);
+    }
+
 
     private void OnDrawGizmos()
     {
