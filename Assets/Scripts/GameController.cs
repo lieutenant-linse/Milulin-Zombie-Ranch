@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
+
     public static GameController instance;
 
     private static int health = 3;
@@ -48,14 +49,14 @@ public class GameController : MonoBehaviour
     {
         health -= damage;
 
-        Debug.Log("Health: " + health);
-
 
         if (Health <= 0)
         {
+
             KillPlayer();
         }
     }
+
 
     public static void HealPlayer(int healAmount)
     {
@@ -64,7 +65,10 @@ public class GameController : MonoBehaviour
 
     private static void KillPlayer()
     {
+
         Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
+
+
     
 }
