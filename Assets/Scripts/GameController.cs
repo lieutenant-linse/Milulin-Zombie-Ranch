@@ -70,6 +70,6 @@ public class GameController : MonoBehaviour
 
         // Hier muss jetzt zum Game-Over Screen übergeleitet werden?
 
-        //Destroy(GameObject.FindGameObjectWithTag("Player"));
+        
     }
 }
