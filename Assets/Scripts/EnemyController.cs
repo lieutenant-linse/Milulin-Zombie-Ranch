@@ -207,10 +207,11 @@ public class EnemyController : MonoBehaviour
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(0.4f);
+        ScoreController.instance.AddPoint();
         Destroy(gameObject);
     }
 
-    
+
 
 
 
