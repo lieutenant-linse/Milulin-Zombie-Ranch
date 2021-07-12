@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
 
     private Animator playerAnim;
 
+
     public float lifeTime;
 
     public bool isEnemyBullet = false;
@@ -39,10 +40,11 @@ public class BulletController : MonoBehaviour
         if (isEnemyBullet)
         {
             curPos = transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, playerPos, 5f * Time.deltaTime);
-            if(curPos == lastPos)
+            transform.position = Vector2.MoveTowards(transform.position, playerPos, 10f * Time.deltaTime);
+            if(curPos == lastPos )
             {
                 Destroy(gameObject);
+                playerAnim.SetBool("Player_Hit", false);
             }
             lastPos = curPos;
         }
@@ -84,6 +86,7 @@ public class BulletController : MonoBehaviour
     }
     private IEnumerator PlayerHitAnimation()
     {
+
         playerAnim.SetBool("Player_Hit", true);
         yield return new WaitForSeconds(0.15f);
         playerAnim.SetBool("Player_Hit", false);
