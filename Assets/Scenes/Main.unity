@@ -101975,11 +101975,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 545692408438584121, guid: 802f0117419959747910f175bf317c63, type: 3}
   m_PrefabInstance: {fileID: 545692408779630621}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1953766181 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 545692408438584120, guid: 802f0117419959747910f175bf317c63, type: 3}
-  m_PrefabInstance: {fileID: 545692408779630621}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &545692408779630621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102145,10 +102140,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3936099037767913892, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
-      propertyPath: playerAnim
-      value: 
-      objectReference: {fileID: 1953766181}
     - target: {fileID: 3936099037767913895, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: m_Name
       value: Enemy

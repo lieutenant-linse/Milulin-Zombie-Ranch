@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     GameObject player;
 
-    public Animator playerAnim;
+    private Animator playerAnim;
 
     public GameObject bulletPrefab;
 
@@ -182,20 +182,9 @@ public class EnemyController : MonoBehaviour
             bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
             bullet.GetComponent<BulletController>().isEnemyBullet = true;
             StartCoroutine(CoolDown());
-
-
-            //GameController.DamagePlayer(1);
-            //StartCoroutine(CoolDown());
-            //StartCoroutine(PlayerHitAnimation());
         }
     }
 
-    private IEnumerator PlayerHitAnimation()
-    {
-        playerAnim.SetBool("Player_Hit", true);
-        yield return new WaitForSeconds(0.5f);
-        playerAnim.SetBool("Player_Hit", false);
-    }
 
     private IEnumerator CoolDown()
     {
@@ -217,7 +206,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
         ScoreController.instance.AddPoint();
         Destroy(gameObject);
     }
