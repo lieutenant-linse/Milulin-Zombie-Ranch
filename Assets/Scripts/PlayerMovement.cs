@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private Vector2 movement;
+    public Vector2 movement;
 
     private Vector2 shooting;
 

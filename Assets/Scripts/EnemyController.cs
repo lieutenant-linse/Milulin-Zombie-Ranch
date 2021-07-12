@@ -102,6 +102,7 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetFloat("Horizontal_Enemy", movement.x);
             animator.SetFloat("Vertical_Enemy", movement.y);
+
         }
 
         if(currState != EnemyState.Die)
@@ -168,8 +169,12 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
-        follow_movement.x = player.transform.position.x;
-        follow_movement.y = player.transform.position.y;
+        follow_movement.x = player.GetComponent<PlayerMovement>().movement.x;
+        follow_movement.y = player.GetComponent<PlayerMovement>().movement.y;
+
+        //follow_movement.x = player.transform.position.x;
+        //follow_movement.y = player.transform.position.y;
+
 
     }
 
