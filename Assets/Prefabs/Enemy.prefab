@@ -115,16 +115,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe820c91a9dc4b69abd5f47457bb043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5365311826777447593, guid: 90d8e01eec826c540b00e1fce6424fda, type: 3}
   currState: 0
   rb_enemy: {fileID: 3936099037767913889}
   animator: {fileID: 3936099037767913888}
-  attackRange: 1
+  attackRange: 5
   coolDownAttack: 0
   attackDelay: 3
   range: 7
   speed: 2
+  bulletSpeed: 5
 --- !u!95 &3936099037767913888
 Animator:
   serializedVersion: 3

@@ -16,7 +16,7 @@ public class EnemyController2 : MonoBehaviour
 
     GameObject player;
 
-    public Animator playerAnim;
+    private Animator playerAnim;
 
 
     public EnemyState2 currState = EnemyState2.Wander;
@@ -186,7 +186,7 @@ public class EnemyController2 : MonoBehaviour
     private IEnumerator PlayerHitAnimation()
     {
         playerAnim.SetBool("Player_Hit", true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         playerAnim.SetBool("Player_Hit", false);
     }
 
@@ -207,7 +207,7 @@ public class EnemyController2 : MonoBehaviour
 
     private IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
         ScoreController.instance.AddPoint();
         Destroy(gameObject);
     }

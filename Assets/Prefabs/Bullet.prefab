@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
+  isEnemyBullet: 0
 --- !u!70 &540903342
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

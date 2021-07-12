@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
+    private Animator playerAnim;
+
     public float lifeTime;
 
     public bool isEnemyBullet = false;
@@ -24,6 +26,11 @@ public class BulletController : MonoBehaviour
         {
             // hier könnte man Manipulationen über den GameController, die nur beim Spieler auftreten sollen einfügen
         }
+    }
+
+    private void Awake()
+    {
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -72,7 +79,16 @@ public class BulletController : MonoBehaviour
         if (collision.tag == "Player" && isEnemyBullet)
         {
             GameController.DamagePlayer(1);
-            Destroy(gameObject);
+            StartCoroutine(PlayerHitAnimation());       
         }
     }
+    private IEnumerator PlayerHitAnimation()
+    {
+        playerAnim.SetBool("Player_Hit", true);
+        yield return new WaitForSeconds(0.15f);
+        playerAnim.SetBool("Player_Hit", false);
+        
+        Destroy(gameObject);
+    }
+
 }
