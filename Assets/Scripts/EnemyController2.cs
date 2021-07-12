@@ -169,6 +169,7 @@ public class EnemyController2 : MonoBehaviour
     {
         if (!coolDownAttack)
         {
+            StartCoroutine(MeeleeAttackAnimation());
             GameController.DamagePlayer(1);
             StartCoroutine(CoolDown());
             StartCoroutine(PlayerHitAnimation());
@@ -188,6 +189,13 @@ public class EnemyController2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         playerAnim.SetBool("Player_Hit", false);
     }
+
+    private IEnumerator MeeleeAttackAnimation() 
+    {
+        animator.SetBool("Attack_Enemy2", true);
+        yield return new WaitForSeconds(1.1f);
+        animator.SetBool("Attack_Enemy2", false);
+    } 
 
     public void Death()
     {

@@ -7,7 +7,7 @@ public class TimerScript : MonoBehaviour
 {
 
     Image timerBar;
-    public float maxTime = 60f;
+    public float maxTime = 180f;
     float timeLeft;
     public GameObject timesUpText;
 
