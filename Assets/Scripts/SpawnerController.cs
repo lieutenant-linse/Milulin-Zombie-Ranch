@@ -39,10 +39,10 @@ public class SpawnerController : MonoBehaviour
     { 
         while (true) 
         {
-            yield return new WaitForSeconds(Random.Range(5f, 10f));
+            yield return new WaitForSeconds(Random.Range(4f, 6f));
             SpawnObjectAtRandom();
 
-            yield return new WaitForSeconds(Random.Range(5f, 10f));
+            yield return new WaitForSeconds(Random.Range(4f, 6f));
             SpawnObjectAtRandom2();
         }
     }

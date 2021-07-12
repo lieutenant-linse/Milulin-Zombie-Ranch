@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68634162318c8d4bb4de6f2cd12011e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
   currState: 0
   rb_enemy: {fileID: 1594760496695693543}
   animator: {fileID: 1594760496695693545}
@@ -56,7 +55,7 @@ MonoBehaviour:
   coolDownAttack: 0
   attackDelay: 2
   range: 7
-  speed: 2
+  speed: 5
 --- !u!212 &1594760496695693542
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -169,8 +169,27 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
-        follow_movement.x = player.GetComponent<PlayerMovement>().movement.x;
-        follow_movement.y = player.GetComponent<PlayerMovement>().movement.y;
+        if(transform.position.x <= player.transform.position.x && transform.position.y <= player.transform.position.y)
+        {
+            follow_movement.x = 1;
+            follow_movement.y = 0;
+        } else if (transform.position.x >= player.transform.position.x && transform.position.y >= player.transform.position.y)
+            {
+                follow_movement.x = -1;
+                follow_movement.y = 0;
+            }  else if (transform.position.x >= player.transform.position.x && transform.position.y <= player.transform.position.y)
+                {
+                    follow_movement.x = 0;
+                    follow_movement.y = 1;
+                }  else if (transform.position.x <= player.transform.position.x && transform.position.y >= player.transform.position.y)
+                    {
+                        follow_movement.x = 0;
+                        follow_movement.y = -1;
+                    }
+
+
+        //follow_movement.x = player.GetComponent<PlayerMovement>().movement.x;
+        //follow_movement.y = player.GetComponent<PlayerMovement>().movement.y;
 
         //follow_movement.x = player.transform.position.x;
         //follow_movement.y = player.transform.position.y;
