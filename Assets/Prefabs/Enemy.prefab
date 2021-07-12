@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 0}
+  bulletPrefab: {fileID: 0}
   currState: 0
   rb_enemy: {fileID: 3936099037767913889}
   animator: {fileID: 3936099037767913888}

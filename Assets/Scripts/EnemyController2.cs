@@ -110,7 +110,7 @@ public class EnemyController2 : MonoBehaviour
             animator.SetFloat("Speed_Enemy_2", follow_movement.sqrMagnitude);
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState2.Die)
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState2.Die && !coolDownAttack)
         {
             currState = EnemyState2.Attack;
         }

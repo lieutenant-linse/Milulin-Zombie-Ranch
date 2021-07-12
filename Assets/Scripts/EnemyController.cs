@@ -11,12 +11,15 @@ public enum EnemyState
     Attack
 };
 
+
 public class EnemyController : MonoBehaviour
 {
 
     GameObject player;
 
     public Animator playerAnim;
+
+    public GameObject bulletPrefab;
 
 
     public EnemyState currState = EnemyState.Wander;
@@ -36,6 +39,8 @@ public class EnemyController : MonoBehaviour
     public float range;
 
     public float speed;
+
+    public float bulletSpeed;
 
     private bool chooseDir = false;
 
@@ -113,7 +118,7 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Speed_Enemy", follow_movement.sqrMagnitude);
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState.Die)
+        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && currState != EnemyState.Die && !coolDownAttack)
         {
             currState = EnemyState.Attack;
         }
@@ -172,10 +177,17 @@ public class EnemyController : MonoBehaviour
     {
         if(!coolDownAttack)
         {
-            GameController.DamagePlayer(1);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
+            bullet.GetComponent<BulletController>().GetPlayer(player.transform);
+            bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+            bullet.GetComponent<BulletController>().isEnemyBullet = true;
             StartCoroutine(CoolDown());
-            StartCoroutine(PlayerHitAnimation());
-        } 
+
+
+            //GameController.DamagePlayer(1);
+            //StartCoroutine(CoolDown());
+            //StartCoroutine(PlayerHitAnimation());
+        }
     }
 
     private IEnumerator PlayerHitAnimation()
