@@ -177,6 +177,7 @@ public class EnemyController : MonoBehaviour
     {
         if(!coolDownAttack)
         {
+            StartCoroutine(RangedAttackAnimation());
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
             bullet.GetComponent<BulletController>().GetPlayer(player.transform);
             bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
@@ -185,6 +186,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private IEnumerator RangedAttackAnimation()
+    {
+        animator.SetBool("Shoot_Enemy", true);
+        yield return new WaitForSeconds(1.1f);
+        animator.SetBool("Shoot_Enemy", false);
+    }
 
     private IEnumerator CoolDown()
     {

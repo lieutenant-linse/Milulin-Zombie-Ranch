@@ -41,7 +41,7 @@ public class BulletController : MonoBehaviour
         {
             curPos = transform.position;
             transform.position = Vector2.MoveTowards(transform.position, playerPos, 10f * Time.deltaTime);
-            if(curPos == lastPos )
+            if(curPos == lastPos)
             {
                 Destroy(gameObject);
                 playerAnim.SetBool("Player_Hit", false);
