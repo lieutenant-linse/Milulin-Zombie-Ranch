@@ -8,6 +8,10 @@ public class SpawnerController : MonoBehaviour
 
     public GameObject EnemyPrefab2;
 
+    public int maxEnemys = 4;
+
+    private int enemyCounter = 0;
+
     public float Radius = 1;
 
     public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
@@ -53,13 +57,21 @@ public class SpawnerController : MonoBehaviour
 
         //Debug.Log(randomPos);
 
-        Instantiate(EnemyPrefab, pos, Quaternion.identity);
+        if (enemyCounter < maxEnemys)
+        {
+            Instantiate(EnemyPrefab, pos, Quaternion.identity);
+            enemyCounter++;
+        }
     }
 
 
     public void SpawnObjectAtRandom2()
     {
-        Instantiate(EnemyPrefab2, pos2, Quaternion.identity);
+        if(enemyCounter < maxEnemys)
+        {
+            Instantiate(EnemyPrefab2, pos2, Quaternion.identity);
+            enemyCounter++;
+        }
     }
 
 

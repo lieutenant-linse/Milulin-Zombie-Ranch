@@ -22137,6 +22137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 1019196249}
   EnemyPrefab2: {fileID: 402456869}
+  maxEnemys: 50
   Radius: 1
   pos: {x: -4.5, y: 12, z: 0}
   pos2: {x: -34, y: -8, z: 0}
