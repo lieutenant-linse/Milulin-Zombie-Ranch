@@ -25,10 +25,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 shooting;
 
+    public int collectedAmount = 0;
+
 
 
     void Update()
     {
+        moveSpeed = GameController.MoveSpeed;
 
         // Movement and movement animation 
 

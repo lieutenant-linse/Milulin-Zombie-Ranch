@@ -25,7 +25,7 @@ public class BulletController : MonoBehaviour
         StartCoroutine(DeathDelay());
         if(!isEnemyBullet)
         {
-            // hier könnte man Manipulationen über den GameController, die nur beim Spieler auftreten sollen einfügen
+            transform.localScale = new Vector2(GameController.BulletSize, GameController.BulletSize);
         }
     }
 
