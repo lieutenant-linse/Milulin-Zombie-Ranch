@@ -209,7 +209,7 @@ public class EnemyController2 : MonoBehaviour
         coolDownAttack = false;
     }
 
-    private IEnumerator PlayerHitAnimation()
+    public IEnumerator PlayerHitAnimation()
     {
         playerAnim.SetBool("Player_Hit", true);
         yield return new WaitForSeconds(0.15f);

@@ -119,11 +119,11 @@ MonoBehaviour:
   currState: 0
   rb_enemy: {fileID: 3936099037767913889}
   animator: {fileID: 3936099037767913888}
-  attackRange: 5
+  attackRange: 7
   coolDownAttack: 0
   attackDelay: 3
-  range: 7
-  speed: 5
+  range: 9
+  speed: 2
   bulletSpeed: 5
 --- !u!95 &3936099037767913888
 Animator:

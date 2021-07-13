@@ -202,18 +202,24 @@ public class EnemyController : MonoBehaviour
         if(!coolDownAttack)
         {
             StartCoroutine(RangedAttackAnimation());
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
-            bullet.GetComponent<BulletController>().GetPlayer(player.transform);
-            bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
-            bullet.GetComponent<BulletController>().isEnemyBullet = true;
             StartCoroutine(CoolDown());
         }
+    }
+
+    void ShootBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
+        bullet.GetComponent<BulletController>().GetPlayer(player.transform);
+        bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+        bullet.GetComponent<BulletController>().isEnemyBullet = true;
     }
 
     private IEnumerator RangedAttackAnimation()
     {
         animator.SetBool("Shoot_Enemy", true);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.65f);
+        ShootBullet();
+        yield return new WaitForSeconds(0.25f);
         animator.SetBool("Shoot_Enemy", false);
     }
 
