@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static GameObject endscreen;
 
     public static Animator playerAnim;
 
@@ -38,6 +40,14 @@ public class GameController : MonoBehaviour
             instance = this;
         }
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
+    }
+
+    void Start()
+    {
+        endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+        endscreen.SetActive(false);
+        health = 3;
     }
 
     // Update is called once per frame
@@ -71,13 +81,15 @@ public class GameController : MonoBehaviour
     {
         bulletSize += size;
     }
-
-    private static void KillPlayer()
-    {
+    
+    public static void KillPlayer()
+    {   
         playerAnim.SetBool("Player_Death", true);
+        endscreen.SetActive(true);
+        Time.timeScale = 0;
 
-        // Hier muss jetzt zum Game-Over Screen übergeleitet werden?
+        // Hier muss jetzt zum Game-Over Screen ?bergeleitet werden?
 
-        
+
     }
 }

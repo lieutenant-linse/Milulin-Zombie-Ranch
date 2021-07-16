@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //Change Scenes
 
-public class MainMenu : MonoBehaviour
-{
-    public void PlayGame () {
+public class MainMenu : MonoBehaviour {
 
-    	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    private void Start()
+    {
+        SceneManager.UnloadSceneAsync("Main");
+    }
+
+    public void PlayGame ()
+    {
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Quit () {
