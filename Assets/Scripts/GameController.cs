@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //huzzah
+
     public static GameObject endscreen;
 
     public static Animator playerAnim;
