@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     private static float moveSpeed = 5f;
 
-    private static float bulletSize = 0.5f;
+    private static float bulletSize = 0.75f;
 
 
     public static float Health { get => health; set => health = value; }
