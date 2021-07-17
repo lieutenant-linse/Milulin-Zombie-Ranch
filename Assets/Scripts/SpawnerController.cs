@@ -16,6 +16,7 @@ public class SpawnerController : MonoBehaviour
 
     public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
     public Vector3 pos2 = new Vector3(-33f, -7f, 0f);
+    public Vector3 pos3 = new Vector3(-30f, 21f, 0f);
 
     public float spawnDelay;
 
@@ -48,6 +49,9 @@ public class SpawnerController : MonoBehaviour
 
             yield return new WaitForSeconds(Random.Range(4f, 6f));
             SpawnObjectAtRandom2();
+
+            yield return new WaitForSeconds(Random.Range(2f, 4f));
+            SpawnObjectAtRandom3();
         }
     }
 
@@ -71,6 +75,16 @@ public class SpawnerController : MonoBehaviour
         {
             Instantiate(EnemyPrefab2, pos2, Quaternion.identity);
             enemyCounter++;
+        }
+    }
+
+    public void SpawnObjectAtRandom3()
+    {
+        if (enemyCounter < maxEnemys)
+        {
+            Instantiate(EnemyPrefab, pos3, Quaternion.identity);
+            Instantiate(EnemyPrefab2, pos3, Quaternion.identity);
+            enemyCounter+=2;
         }
     }
 

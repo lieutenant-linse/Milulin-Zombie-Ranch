@@ -53,7 +53,9 @@ public class PlayerMovement : MonoBehaviour
         // float shootVert = Input.GetAxis("ShootVertical");
 
         shooting.x = Input.GetAxisRaw("ShootHorizontal");
+
         shooting.y = Input.GetAxisRaw("ShootVertical");
+
 
         animator.SetFloat("ShootHorizontal", shooting.x);
         animator.SetFloat("ShootVertical", shooting.y);
