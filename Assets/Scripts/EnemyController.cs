@@ -15,12 +15,12 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour
 {
 
+    //necessary GameObjects / Components
     GameObject player;
 
-    private Animator playerAnim;
+    private Animator playerAnim; //defined in Awake()
 
     public GameObject bulletPrefab;
-
 
     public EnemyState currState = EnemyState.Wander;
 
@@ -29,15 +29,14 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
 
 
-
-
+    //Properties for controlling Game Flow
     public float attackRange;
 
     public bool coolDownAttack;
 
     public float attackDelay;
 
-    public float range;
+    public float range; //between enemy and player
 
     public float speed;
 
@@ -45,16 +44,14 @@ public class EnemyController : MonoBehaviour
 
     private bool chooseDir = false;
 
-    private bool dead = false;
 
 
-
-    //private Vector3 randomDir;
-
+    //different variables for Wander and Follow State to differntiate in the animator
     private Vector2 movement;
     private Vector2 follow_movement;
 
 
+    //Ludowig
     private void Awake()
     {
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
@@ -71,9 +68,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //different states for different behaviour from the Enemy
         switch (currState)
         {
-        
             case(EnemyState.Wander):
                 Wander();
                 break;
@@ -88,11 +85,14 @@ public class EnemyController : MonoBehaviour
 
         }
 
+        //if the enemy is close enough to the Player it changes state to follow the player
         if(IsPlayerInRange(range) && currState != EnemyState.Die)
         {
             currState = EnemyState.Follow;
         }
-        else if(!IsPlayerInRange(range) && currState != EnemyState.Die)
+
+        //if the enemy isn't close enough to the Player it changes state to wander around
+        else if (!IsPlayerInRange(range) && currState != EnemyState.Die)
         {
             currState = EnemyState.Wander;
         }
@@ -128,35 +128,35 @@ public class EnemyController : MonoBehaviour
 
     }
 
+
+    //True/False if the Enemy is in Range to follow the Player - Depending on predefined range variable
     private bool IsPlayerInRange(float range)
     {
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
+
+
+    //A Coroutine to generate a random direction (-1,0,1) for the enemy in Wander-State
     private IEnumerator ChooseDirection()
     {
         chooseDir = true;
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
-
-        //new way to move randonmly to map to animation
+        yield return new WaitForSeconds(Random.Range(1f, 3f)); //to make the Enemy look like it's decinding where to go next
         follow_movement = Vector2.zero;
         movement = new Vector2(Random.Range(-1,2), Random.Range(-1, 2));
-        
-
-        //Quaternion nextRotation = Quaternion.Euler(randomDir);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Random.Range(.5f, 2.5f));
         chooseDir = false;
     }
 
+
     void Wander()
     {
+        //Starts the ChooseDirection() only when there isn't Coroutine already running
         if (!chooseDir)
         {
             StartCoroutine(ChooseDirection());
         }
 
-        // transform.position += -transform.right * speed * Time.deltaTime;
-
+        //Enemy Wanders in the direction, wich was generated before
         rb_enemy.MovePosition(rb_enemy.position + movement * speed * Time.fixedDeltaTime);
 
 
@@ -166,6 +166,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //The Enemy moves towards the player
+    //depending on the realtive positions of Enemy and player, the Enemy looks in different directions
     void Follow()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
@@ -187,16 +189,8 @@ public class EnemyController : MonoBehaviour
                         follow_movement.x = 0;
                         follow_movement.y = -1;
                     }
-
-
-        //follow_movement.x = player.GetComponent<PlayerMovement>().movement.x;
-        //follow_movement.y = player.GetComponent<PlayerMovement>().movement.y;
-
-        //follow_movement.x = player.transform.position.x;
-        //follow_movement.y = player.transform.position.y;
-
-
     }
+
 
     void Attack()
     {
@@ -207,6 +201,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
     void ShootBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
@@ -214,6 +209,7 @@ public class EnemyController : MonoBehaviour
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
     }
+
 
     private IEnumerator RangedAttackAnimation()
     {
@@ -224,6 +220,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("Shoot_Enemy", false);
     }
 
+
     private IEnumerator CoolDown()
     {
         coolDownAttack = true;
@@ -231,8 +228,6 @@ public class EnemyController : MonoBehaviour
         coolDownAttack = false;
     }
 
-
-    // on Collision Death - Sheesh
 
     public void Death()
     {
@@ -242,17 +237,13 @@ public class EnemyController : MonoBehaviour
 
     }
 
+
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(0.3f);
         ScoreController.instance.AddPoint();
-        GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().enemyCounter -= 1;
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().enemyCounter -= 1; //important for the the maximum of Enemys on the Map at a time
         Destroy(gameObject);
     }
-
-
-
-
-
 }
 

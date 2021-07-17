@@ -9,14 +9,14 @@ public class AudioController : MonoBehaviour
 
     void Awake()
     {
-        //if we don't have an [_instance] set yet
+        //Singleton for Audio - if there is already a Background Audio
         if (!_instance)
             _instance = this;
-        //otherwise, if we do, kill this thing
         else
             Destroy(this.gameObject);
 
 
+        //Provides the Audio from being stopped on Scene change
         DontDestroyOnLoad(this.gameObject);
     }
 }
