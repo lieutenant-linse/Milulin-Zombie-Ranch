@@ -20,7 +20,7 @@ public class TimerScript : MonoBehaviour
         timeLeft = maxTime;
         Time.timeScale = 1;
         endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
-        endscreen.SetActive(false);
+        //endscreen.SetActive(false);
     }
 
     // Update is called once per frame

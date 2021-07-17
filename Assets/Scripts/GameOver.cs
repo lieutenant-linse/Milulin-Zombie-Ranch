@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    public Text scoreText;
+    public Text highscoreText;
 
     public void BackToMenu()
     {
@@ -16,6 +18,12 @@ public class GameOver : MonoBehaviour
 
     	Debug.Log("Quit");
     	Application.Quit();
+    }
+
+    public void Setup(int score, int highscore)
+    {
+        scoreText.text = "SCORE: " + score.ToString() + " POINTS";
+        highscoreText.text = "HIGHSCORE: " + highscore.ToString() + " POINTS";
     }
     
 }
