@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float lastFire;
 
 
+    public bool playerDead = false;
+
 
     public Vector2 movement;
 
@@ -31,41 +33,46 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveSpeed = GameController.MoveSpeed;
+        // as long as the player is alive, the update method is executed
+        if (!playerDead)
+        {
+            // The moveSpeed gets overwritten by the GameController, this allows the item to increase the moveSpeed
+            moveSpeed = GameController.MoveSpeed;
 
-        // Movement and movement animation 
+            // Movement and movement animation 
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
 
-        if (movement != Vector2.zero) { 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
+            if (movement != Vector2.zero)
+            {
+                animator.SetFloat("Horizontal", movement.x);
+                animator.SetFloat("Vertical", movement.y);
+            }
+
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+
+
+            // Shooting and shooting animation
+
+            shooting.x = Input.GetAxisRaw("ShootHorizontal");
+
+            shooting.y = Input.GetAxisRaw("ShootVertical");
+
+
+            animator.SetFloat("ShootHorizontal", shooting.x);
+            animator.SetFloat("ShootVertical", shooting.y);
+
+            animator.SetFloat("Shoot", shooting.sqrMagnitude);
+
+            if ((shooting.x != 0 || shooting.y != 0) && Time.time > lastFire + fireDelay)
+            {
+                Shoot(shooting.x, shooting.y);
+                lastFire = Time.time;
+            }
         }
 
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-
-
-        // Shooting and shooting animation
-
-        // float shootHor = Input.GetAxis("ShootHorizontal");
-        // float shootVert = Input.GetAxis("ShootVertical");
-
-        shooting.x = Input.GetAxisRaw("ShootHorizontal");
-
-        shooting.y = Input.GetAxisRaw("ShootVertical");
-
-
-        animator.SetFloat("ShootHorizontal", shooting.x);
-        animator.SetFloat("ShootVertical", shooting.y);
-
-        animator.SetFloat("Shoot", shooting.sqrMagnitude);
-
-        if ((shooting.x != 0 || shooting.y != 0) && Time.time > lastFire + fireDelay) {
-            Shoot(shooting.x, shooting.y);
-            lastFire = Time.time;
-        }
 
 
     }

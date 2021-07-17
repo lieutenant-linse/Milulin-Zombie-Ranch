@@ -6,13 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    //huzzah
 
     public static GameObject endscreen;
 
+
     public static Animator playerAnim;
 
+    public static GameObject player;
+
+
     public static GameController instance;
+
+
+    // These values apply to the player
 
     private static float health = 3;
 
@@ -23,6 +29,7 @@ public class GameController : MonoBehaviour
     private static float bulletSize = 0.75f;
 
 
+    // Getter/ Setter methods for the private values above
     public static float Health { get => health; set => health = value; }
 
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
@@ -31,17 +38,19 @@ public class GameController : MonoBehaviour
 
     public static float BulletSize  { get => bulletSize; set => bulletSize = value; }
 
-    // Hier muss dann noch eine Connection zur UI gemacht werden, also Health-Anzeige usw.
 
-
-    // Start is called before the first frame update
     private void Awake()
     {
+
         if(instance = null)
         {
             instance = this;
         }
+
+
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -49,14 +58,10 @@ public class GameController : MonoBehaviour
     {
         endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         endscreen.SetActive(false);
-        health = maxHealth;
-        Time.timeScale = 1f;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        health = maxHealth;
+
+        Time.timeScale = 1f;
     }
 
     public static void DamagePlayer(int damage)
@@ -69,7 +74,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    // The following three functions are used by the items to manipulate the players stats
     public static void HealPlayer(float healAmount)
     {
         health = Mathf.Min(maxHealth, health + healAmount);
@@ -85,14 +90,12 @@ public class GameController : MonoBehaviour
         bulletSize += size;
     }
     
+    // 
     public static void KillPlayer()
     {   
         playerAnim.SetBool("Player_Death", true);
-        endscreen.SetActive(true);
-        Time.timeScale = 0;
-
-        // Hier muss jetzt zum Game-Over Screen ?bergeleitet werden?
-
+        player.GetComponent<PlayerMovement>().playerDead = true;
+        //endscreen.SetActive(true
 
     }
 }

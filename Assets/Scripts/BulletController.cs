@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour
 
     public bool isEnemyBullet = false;
 
-
+    // Here we save the position in the last update and current position of the bullet
     private Vector2 lastPos;
     private Vector2 curPos;
 
@@ -22,7 +22,10 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Every bullet has a maximum lifetime, after which it gets destroyed
         StartCoroutine(DeathDelay());
+
+        // The players bullets can be changed in size by collecting the respective item
         if(!isEnemyBullet)
         {
             transform.localScale = new Vector2(GameController.BulletSize, GameController.BulletSize);
@@ -31,12 +34,14 @@ public class BulletController : MonoBehaviour
 
     private void Awake()
     {
+        // Vllt brauche ich das hier nicht, wenn ich die Animation in den Player auslagern kann
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Enemy bullets get shot towards the current position of the player, if it reaches the position (doesn´t move anymore) it gets destroyed
         if (isEnemyBullet)
         {
             curPos = transform.position;
@@ -61,6 +66,7 @@ public class BulletController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Enemy-Bullets only damage the player and player-bullets only damage enemies
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -84,6 +90,8 @@ public class BulletController : MonoBehaviour
             StartCoroutine(PlayerHitAnimation());       
         }
     }
+
+    //versuchen in Player auszulagern?
     private IEnumerator PlayerHitAnimation()
     {
 
