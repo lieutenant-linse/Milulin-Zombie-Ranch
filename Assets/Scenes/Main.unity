@@ -22557,7 +22557,7 @@ MonoBehaviour:
   Radius: 1
   pos: {x: -4.5, y: 12, z: 0}
   pos2: {x: -34, y: -8, z: 0}
-  spawnDelay: 10
+  spawnDelay: 3
 --- !u!4 &878097978
 Transform:
   m_ObjectHideFlags: 0
