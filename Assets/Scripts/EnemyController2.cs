@@ -235,6 +235,7 @@ public class EnemyController2 : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         ScoreController.instance.AddPoint();
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().enemyCounter -= 1;
         Destroy(gameObject);
     }
 

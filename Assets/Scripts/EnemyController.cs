@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
 
 
 
+
     public float attackRange;
 
     public bool coolDownAttack;
@@ -245,6 +246,7 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         ScoreController.instance.AddPoint();
+        GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerController>().enemyCounter -= 1;
         Destroy(gameObject);
     }
 

@@ -22752,7 +22752,7 @@ GameObject:
   - component: {fileID: 878097977}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22772,6 +22772,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1019196249}
   EnemyPrefab2: {fileID: 402456869}
   maxEnemys: 100
+  enemyCounter: 0
   Radius: 1
   pos: {x: -4.5, y: 12, z: 0}
   pos2: {x: -34, y: -8, z: 0}

@@ -8,9 +8,9 @@ public class SpawnerController : MonoBehaviour
 
     public GameObject EnemyPrefab2;
 
-    public int maxEnemys = 4;
+    public int maxEnemys = 100;
 
-    private int enemyCounter = 0;
+    public int enemyCounter = 0;
 
     public float Radius = 1;
 
