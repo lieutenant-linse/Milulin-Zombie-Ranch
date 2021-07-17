@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
     public static ScoreController instance;
-
+    public GameOver GameOver;
     public Text scoreText;
     public Text highscoreText;
 
@@ -32,5 +32,10 @@ public class ScoreController : MonoBehaviour
         scoreText.text = score.ToString() + " POINTS";
         if (highscore < score)
             PlayerPrefs.SetInt("highscore", score);
+    }
+
+    public void GameOverScore()
+    {
+        GameOver.Setup(score, highscore);
     }
 }
