@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{   
-    public float moveSpeed = 5f;
+{
+    
+    public Vector2 movement;
 
+    private Vector2 shooting;
+
+
+    //necessary GameObjects / Components
     public Rigidbody2D rb;
 
     public Animator animator;
 
-
     public GameObject bulletPrefab;
+
+
+    //Properties for controlling Game Flow - PLayer
+    public float moveSpeed = 5f;
 
     public float bulletSpeed;
 
@@ -20,12 +28,11 @@ public class PlayerMovement : MonoBehaviour
     private float lastFire;
 
 
+
     public bool playerDead = false;
 
 
-    public Vector2 movement;
-
-    private Vector2 shooting;
+    
 
 
 
@@ -38,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
             // The moveSpeed gets overwritten by the GameController, this allows the item to increase the moveSpeed
             moveSpeed = GameController.MoveSpeed;
 
-            // Movement and movement animation 
-
+            // Movement and movement animation (input and Animator values)
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
@@ -53,8 +59,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", movement.sqrMagnitude);
 
 
-            // Shooting and shooting animation
-
+            // Shooting and shooting animation (input and Animator values)
             shooting.x = Input.GetAxisRaw("ShootHorizontal");
             shooting.y = Input.GetAxisRaw("ShootVertical");
 

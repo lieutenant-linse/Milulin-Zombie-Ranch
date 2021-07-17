@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
         player.GetComponent<PlayerMovement>().playerDead = true;
 
         // 1-2 Sekunden IENumerator und dann zum Endscreen
-        //endscreen.SetActive(true);
+        endscreen.SetActive(true);
 
     }
 }
