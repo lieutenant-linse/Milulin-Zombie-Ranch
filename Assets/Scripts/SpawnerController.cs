@@ -14,14 +14,14 @@ public class SpawnerController : MonoBehaviour
 
     public float Radius = 1;
 
-    public Vector3 pos = new Vector3 (-4.5f, 12f, 0f);
-    public Vector3 pos2 = new Vector3(-33f, -7f, 0f);
-    public Vector3 pos3 = new Vector3(-30f, 21f, 0f);
-
     public float spawnDelay;
 
     private float lastSpawn;
 
+    //three different spawning positions (on each island one)
+    public Vector3 pos = new Vector3(-4.5f, 12f, 0f);
+    public Vector3 pos2 = new Vector3(-33f, -7f, 0f);
+    public Vector3 pos3 = new Vector3(-30f, 21f, 0f);
 
 
     void Start()
