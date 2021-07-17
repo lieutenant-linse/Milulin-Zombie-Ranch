@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 shooting;
 
-    public int collectedAmount = 0;
 
 
 
@@ -57,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
             // Shooting and shooting animation
 
             shooting.x = Input.GetAxisRaw("ShootHorizontal");
-
             shooting.y = Input.GetAxisRaw("ShootVertical");
 
 
