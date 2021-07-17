@@ -95,7 +95,9 @@ public class GameController : MonoBehaviour
     {   
         playerAnim.SetBool("Player_Death", true);
         player.GetComponent<PlayerMovement>().playerDead = true;
-        //endscreen.SetActive(true
+
+        // 1-2 Sekunden IENumerator und dann zum Endscreen
+        //endscreen.SetActive(true);
 
     }
 }

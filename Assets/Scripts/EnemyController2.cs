@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// Different states for different kinds of actions, actions are selected in e.g. the update-method depending on the active state
 public enum EnemyState2
 {
     Wander,
@@ -14,6 +15,7 @@ public enum EnemyState2
 public class EnemyController2 : MonoBehaviour
 {
 
+    //necessary GameObjects / Components
     GameObject player;
 
     private Animator playerAnim;
@@ -26,25 +28,23 @@ public class EnemyController2 : MonoBehaviour
     public Animator animator;
 
 
-
+    //Properties for controlling Game Flow
     public float attackRange;
 
     public bool coolDownAttack;
 
     public float attackDelay;
 
-    public float range;
+    public float range; //between enemy and player
 
     public float speed;
 
     private bool chooseDir = false;
 
-    private bool dead = false;
 
 
 
-    //private Vector3 randomDir;
-
+    //different variables for Wander and Follow State to differntiate in the animator
     private Vector2 movement;
     private Vector2 follow_movement;
 
@@ -64,9 +64,9 @@ public class EnemyController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //different states for different behaviour from the Enemy
         switch (currState)
         {
-
             case (EnemyState2.Wander):
                 Wander();
                 break;
@@ -80,10 +80,13 @@ public class EnemyController2 : MonoBehaviour
                 break;
         }
 
+        //if the enemy is close enough to the Player it changes state to follow the player
         if (IsPlayerInRange(range) && currState != EnemyState2.Die)
         {
             currState = EnemyState2.Follow;
         }
+
+        //if the enemy isn't close enough to the Player it changes state to wander around
         else if (!IsPlayerInRange(range) && currState != EnemyState2.Die)
         {
             currState = EnemyState2.Wander;
@@ -96,6 +99,7 @@ public class EnemyController2 : MonoBehaviour
             animator.SetFloat("Horizontal_Enemy_2", movement.x);
             animator.SetFloat("Vertical_Enemy_2", movement.y);
         }
+
         if(currState != EnemyState2.Die)
         {
             animator.SetFloat("Speed_Enemy_2", movement.sqrMagnitude);
@@ -117,12 +121,14 @@ public class EnemyController2 : MonoBehaviour
 
 
     }
-
+    //True/False if the Enemy is in Range to follow the Player - Depending on predefined range variable
     private bool IsPlayerInRange(float range)
     {
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
+
+    //A Coroutine to generate a random direction (-1,0,1) for the enemy in Wander-State
     private IEnumerator ChooseDirection()
     {
         chooseDir = true;
@@ -140,13 +146,13 @@ public class EnemyController2 : MonoBehaviour
 
     void Wander()
     {
+        //Starts the ChooseDirection() only when there isn't Coroutine already running
         if (!chooseDir)
         {
             StartCoroutine(ChooseDirection());
         }
 
-        // transform.position += -transform.right * speed * Time.deltaTime;
-
+        //Enemy Wanders in the direction, wich was generated before
         rb_enemy.MovePosition(rb_enemy.position + movement * speed * Time.fixedDeltaTime);
 
 
@@ -156,6 +162,8 @@ public class EnemyController2 : MonoBehaviour
         }
     }
 
+    //The Enemy moves towards the player
+    //depending on the realtive positions of Enemy and player, the Enemy looks in different directions
     void Follow()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
@@ -180,17 +188,9 @@ public class EnemyController2 : MonoBehaviour
             follow_movement.x = 0;
             follow_movement.y = -1;
         }
-
-
-        //follow_movement.x = player.GetComponent<PlayerMovement>().movement.x;
-        //follow_movement.y = player.GetComponent<PlayerMovement>().movement.y;
-
-        //follow_movement.x = player.transform.position.x;
-        //follow_movement.y = player.transform.position.y;
-
-
     }
 
+    // If the enemy is close to the player, he performs a meelee attack and damages him
     void Attack()
     {
         if (!coolDownAttack)
@@ -231,6 +231,7 @@ public class EnemyController2 : MonoBehaviour
 
     }
 
+    // A delay in the destruction of the GameObject, so that the hot-animation of the enemy has time to be played
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(0.3f);

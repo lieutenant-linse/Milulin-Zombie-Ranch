@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// Different states for different kinds of actions, actions are selected in e.g. the update-method depending on the active state
 public enum EnemyState
 {
     Wander,
@@ -18,7 +19,6 @@ public class EnemyController : MonoBehaviour
     //necessary GameObjects / Components
     GameObject player;
 
-    private Animator playerAnim; //defined in Awake()
 
     public GameObject bulletPrefab;
 
@@ -50,12 +50,6 @@ public class EnemyController : MonoBehaviour
     private Vector2 movement;
     private Vector2 follow_movement;
 
-
-    //Ludowig
-    private void Awake()
-    {
-        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-    }
 
 
     // Start is called before the first frame update
@@ -191,7 +185,7 @@ public class EnemyController : MonoBehaviour
                     }
     }
 
-
+    // The enemy shoots a bullet towards the player and the animation gets activated
     void Attack()
     {
         if(!coolDownAttack)
@@ -199,6 +193,16 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(RangedAttackAnimation());
             StartCoroutine(CoolDown());
         }
+    }
+
+    // The animation gets started before the bullet actually gets shot, so that the timings of the bullet and the shot are coherent
+    private IEnumerator RangedAttackAnimation()
+    {
+        animator.SetBool("Shoot_Enemy", true);
+        yield return new WaitForSeconds(0.65f);
+        ShootBullet();
+        yield return new WaitForSeconds(0.25f);
+        animator.SetBool("Shoot_Enemy", false);
     }
 
 
@@ -210,15 +214,6 @@ public class EnemyController : MonoBehaviour
         bullet.GetComponent<BulletController>().isEnemyBullet = true;
     }
 
-
-    private IEnumerator RangedAttackAnimation()
-    {
-        animator.SetBool("Shoot_Enemy", true);
-        yield return new WaitForSeconds(0.65f);
-        ShootBullet();
-        yield return new WaitForSeconds(0.25f);
-        animator.SetBool("Shoot_Enemy", false);
-    }
 
 
     private IEnumerator CoolDown()
@@ -234,10 +229,9 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Death_Enemy");
         currState = EnemyState.Die;
         StartCoroutine(DeathDelay());
-
     }
 
-
+    // A delay in the destruction of the GameObject, so that the hot-animation of the enemy has time to be played
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(0.3f);
