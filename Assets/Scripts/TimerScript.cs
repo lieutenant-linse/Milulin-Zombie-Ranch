@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
 
+    public GameObject endscreen;
     Image timerBar;
     public float maxTime = 180f;
     float timeLeft;
@@ -17,6 +18,9 @@ public class TimerScript : MonoBehaviour
         timesUpText.SetActive(false);
         timerBar = GetComponent<Image>();
         timeLeft = maxTime;
+        Time.timeScale = 1;
+        endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+        endscreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class TimerScript : MonoBehaviour
         else
         {
             timesUpText.SetActive(true);
+            endscreen.SetActive(true);
             Time.timeScale = 0;
         }
     }

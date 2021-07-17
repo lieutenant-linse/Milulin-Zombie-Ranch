@@ -47,7 +47,8 @@ public class GameController : MonoBehaviour
     {
         endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         endscreen.SetActive(false);
-        health = 3;
+        health = maxHealth;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
