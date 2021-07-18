@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
 
+
+
     // These values apply to the player
 
     private static float health = 3;
@@ -92,12 +94,14 @@ public class GameController : MonoBehaviour
     
     // 
     public static void KillPlayer()
-    {   
-        playerAnim.SetBool("Player_Death", true);
-        player.GetComponent<PlayerMovement>().playerDead = true;
-
-        // 1-2 Sekunden IENumerator und dann zum Endscreen
-        endscreen.SetActive(true);
-
+    {
+        if (!player.GetComponent<PlayerMovement>().playerDead)
+        {
+            player.GetComponent<PlayerMovement>().DeathAnimation();
+            player.GetComponent<AudioSource>().Play();
+            player.GetComponent<PlayerMovement>().playerDead = true;
+        }
     }
+
+
 }

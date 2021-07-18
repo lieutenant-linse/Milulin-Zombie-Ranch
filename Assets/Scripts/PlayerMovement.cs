@@ -75,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
                 lastFire = Time.time;
             }
         }
+        else
+        {
+            Destroy(rb);
+            StartCoroutine(GameOverDelay());
+        }
 
 
 
@@ -97,5 +102,16 @@ public class PlayerMovement : MonoBehaviour
             0
             );
     }
+
+    public void DeathAnimation()
+    {
+        animator.SetBool("Player_Death", true);
+    }
+    private static IEnumerator GameOverDelay()
+    {
+        yield return new WaitForSeconds(3.5f);
+        GameController.endscreen.SetActive(true);
+    }
+
 
 }
