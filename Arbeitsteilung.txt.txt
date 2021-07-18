@@ -1,0 +1,19 @@
+Wir haben zu Beginn gemeinsam passende Assets ausgewählt, die Map erstellt (jeder eine Insel) und uns zusammen in Animation und Movement eingearbeitet.
+Linus hat daraufhin das Player-Movement vervollständigt, Michelle die Map optimiert und Ludwig die verbleibenden Animationen erstellt. 
+
+Im Anschluss haben wir gemeinsam die nächsten Schritte geplant, über Lösungen für Problemmstellungen diskutiert und wiefolgt weitere Aufgaben verteilt:
+Linus: Gegner-Movement und AI implementiert; Ludwig: Player-Shooting mitsamt Animation; Michelle: Map-Collisions und mehrere Bugfixes (Gegner spawn stoppt, Idle-Animation buggy, etc.)
+
+Bei weiteren Treffen haben wir gemeinsam Verbesserungen implementiert und/oder Probleme behoben, die uns während des Schaffensprozesses aufgefallen sind.
+Verteilung nächster Arbeitsschritte:
+Linus: Sound und Enemy-Spawner; Ludwig: Nah- und Fernkampf der Gegner; Michelle: Startmenü und Funktionalität der Szenenübergänge
+
+Nach erneuten Rücksprachen finale Arbeitsschritte:
+Linus: In-Game UI und Timer; Ludwig: GameController und Items; Michelle: Restliche UI (Endscreen, Options)
+
+Abschließend haben wir alle zusammen das Spiel getestet und an den Einstellungen geschraubt um es abzurunden.
+
+
+
+
+
