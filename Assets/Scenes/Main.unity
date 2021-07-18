@@ -882,8 +882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endscreen: {fileID: 0}
-  maxTime: 180
   timesUpText: {fileID: 2046773006}
+  maxTime: 180
 --- !u!114 &321835856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126071,11 +126071,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1594760496695693540, guid: 0d451704ddc234d48a2670c20e3452f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.04
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1594760496695693540, guid: 0d451704ddc234d48a2670c20e3452f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.17
+      value: 20.3
       objectReference: {fileID: 0}
     - target: {fileID: 1594760496695693540, guid: 0d451704ddc234d48a2670c20e3452f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -126122,17 +126122,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1019196250, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
-      propertyPath: MinDistance
-      value: 0.79868793
-      objectReference: {fileID: 0}
     - target: {fileID: 3936099037767913891, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3936099037767913891, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -109.77
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 3936099037767913891, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: m_LocalPosition.y

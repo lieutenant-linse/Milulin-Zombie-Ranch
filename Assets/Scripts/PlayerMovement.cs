@@ -33,10 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     
-
-
-
-
     void Update()
     {
         // as long as the player is alive, the update method is executed

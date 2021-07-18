@@ -63,6 +63,10 @@ public class GameController : MonoBehaviour
 
         health = maxHealth;
 
+        moveSpeed = 5f;
+
+        bulletSize = 0.75f;
+
         Time.timeScale = 1f;
     }
 
