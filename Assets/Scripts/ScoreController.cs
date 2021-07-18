@@ -36,6 +36,7 @@ public class ScoreController : MonoBehaviour
         scoreText.text = score.ToString() + " POINTS"; //transmit the score to the UI element
         if (highscore < score)
             PlayerPrefs.SetInt("highscore", score); //Overwrite the Highscore in PlayerPrefs
+        GameOverScore();
     }
 
     public void GameOverScore()
