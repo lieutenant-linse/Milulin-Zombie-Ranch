@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private static IEnumerator GameOverDelay()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(2.5f);
         GameController.endscreen.SetActive(true);
     }
 
