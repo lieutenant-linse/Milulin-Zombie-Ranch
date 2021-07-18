@@ -24362,9 +24362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 1019196249}
   EnemyPrefab2: {fileID: 402456869}
-  maxEnemys: 50
+  maxEnemys: 75
   enemyCounter: 0
-  Radius: 1
+  Radius: 2
   spawnDelay: 4
   pos: {x: -4.5, y: 12, z: 0}
   pos2: {x: -34, y: -8, z: 0}
@@ -126005,6 +126005,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1594760496695693541, guid: 0d451704ddc234d48a2670c20e3452f0, type: 3}
+      propertyPath: range
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1594760496695693546, guid: 0d451704ddc234d48a2670c20e3452f0, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -126061,6 +126065,10 @@ PrefabInstance:
     - target: {fileID: 3936099037767913891, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936099037767913892, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
+      propertyPath: range
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3936099037767913892, guid: 736d506766ccacd45b6cd079aafe0374, type: 3}
       propertyPath: bulletSpeed
