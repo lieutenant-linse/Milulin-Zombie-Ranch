@@ -27,6 +27,7 @@ public class ScoreController : MonoBehaviour
         //transmit the score to the UI element
         scoreText.text = score.ToString() + " POINTS"; 
         highscoreText.text = "Highscore: " + highscore.ToString();
+        GameOverScore();
     }
 
     //called by Dethdelay() function in EnemyController 1/2

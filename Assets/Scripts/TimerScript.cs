@@ -9,11 +9,17 @@ public class TimerScript : MonoBehaviour
     public GameObject endscreen;
     public GameObject timesUpText;
     Image timerBar;
+    public GameObject player;
     
     //Time Elements
     public float maxTime = 180f;
     float timeLeft;
-    
+
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +32,7 @@ public class TimerScript : MonoBehaviour
         timeLeft = maxTime; //timeleft starts with maxTime
         Time.timeScale = 1; //as fast as "real" time 
         endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
-        //endscreen.SetActive(false);
+        endscreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,8 +47,16 @@ public class TimerScript : MonoBehaviour
         else //Timer is over - UI Elemts get activated
         {
             timesUpText.SetActive(true);
-            endscreen.SetActive(true);
-            Time.timeScale = 0;
+            StartCoroutine(TimeOverDelay());
+            
         }
+    }
+
+    private IEnumerator TimeOverDelay()
+    {
+        player.GetComponent<PlayerMovement>().playerDead = true;
+        yield return new WaitForSeconds(1f);
+        endscreen.SetActive(true);
+        Time.timeScale = 0;
     }
 }
