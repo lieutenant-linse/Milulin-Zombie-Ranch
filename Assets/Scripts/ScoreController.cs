@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
+
     public static ScoreController instance;
     public GameOver GameOver;
     public Text scoreText;
@@ -21,17 +22,20 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
-        scoreText.text = score.ToString() + " POINTS";
+        highscore = PlayerPrefs.GetInt("highscore", 0); //persistent highscore in PlayerPrefs
+
+        //transmit the score to the UI element
+        scoreText.text = score.ToString() + " POINTS"; 
         highscoreText.text = "Highscore: " + highscore.ToString();
     }
 
+    //called by Dethdelay() function in EnemyController 1/2
     public void AddPoint()
     {
         score += 1;
-        scoreText.text = score.ToString() + " POINTS";
+        scoreText.text = score.ToString() + " POINTS"; //transmit the score to the UI element
         if (highscore < score)
-            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.SetInt("highscore", score); //Overwrite the Highscore in PlayerPrefs
     }
 
     public void GameOverScore()
