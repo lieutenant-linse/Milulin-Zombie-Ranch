@@ -52,13 +52,16 @@ public class GameController : MonoBehaviour
 
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
 
+
         player = GameObject.FindGameObjectWithTag("Player");
+
+        endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
 
     }
 
     void Start()
     {
-        endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+        
         endscreen.SetActive(false);
 
         health = maxHealth;
