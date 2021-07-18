@@ -2,6 +2,12 @@ Hallo,
 
 willkommen zu Milulins' Monster Ranch. Hier gibt es eine kleine Anleitung zu unserem Spiel.
 
+**Wichtig**:
+
+Damit die UI in Unity im Game-Modus richtig aussieht, muss der Aspect Ratio in Unity -> Game auf FullHD (1920x1080) gesetzt sein!
+Ausserdem müssen die Menu und Main Szene in die Hierarchie gezogen werden. (die GameOver-Scene wird nicht verwendet, ist also nicht notwendig)
+Wir haben die Version 2020.3.9f1 von Unity benutzt.
+
 **Story**:
 
 Eines morgens verlässt der Cowboy Cody sein heimeliges Haus, nur um zu merken, dass seine idyllische Insel von modrig-muffigen Monstern überrannt wird. Das lässt sich der taffe Tunichtgut nicht gefallen, also greift er zu seinem rostigen Revolver um seine Ranch zu reinigen!
