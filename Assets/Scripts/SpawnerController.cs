@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
+    //set Enemys with Unity Editor
     public GameObject EnemyPrefab;
 
     public GameObject EnemyPrefab2;
 
+
+    //Enemy Game Flow preferences
     public int maxEnemys = 100;
 
     public int enemyCounter = 0;
 
+
+    //Spawner settings
     public float Radius = 1;
 
     public float spawnDelay;
@@ -32,7 +37,7 @@ public class SpawnerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
+        //SpawnTimer starts only after LastSpawn + SpawnDelay
         if (Time.time > lastSpawn + spawnDelay)
         {
             StartCoroutine(SpawnTimer());
@@ -44,23 +49,21 @@ public class SpawnerController : MonoBehaviour
     { 
         while (true) 
         {
-            yield return new WaitForSeconds(Random.Range(4f, 6f));
+            //Wait for another 2-4 Seconds for randomness
+            yield return new WaitForSeconds(Random.Range(2f, 4f));
+
+            //Enemys spwaning in three different locations
             SpawnObjectAtRandom();
 
-            yield return new WaitForSeconds(Random.Range(4f, 6f));
             SpawnObjectAtRandom2();
 
-            yield return new WaitForSeconds(Random.Range(2f, 4f));
             SpawnObjectAtRandom3();
         }
     }
 
+    //If there aren't too many Enemys on the field (MaxEnemys) then a enemy prefab is instantiated
     public void SpawnObjectAtRandom()
     {
-        //Vector3 randomPos = Random.insideUnitCircle * Radius;
-
-        //Debug.Log(randomPos);
-
         if (enemyCounter < maxEnemys)
         {
             Instantiate(EnemyPrefab, pos, Quaternion.identity);
@@ -68,7 +71,7 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
-
+    //If there aren't too many Enemys on the field (MaxEnemys) then a enemy prefab is instantiated
     public void SpawnObjectAtRandom2()
     {
         if(enemyCounter < maxEnemys)
@@ -78,6 +81,7 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
+    //If there aren't too many Enemys on the field (MaxEnemys) then teo enemy prefasb are instantiated
     public void SpawnObjectAtRandom3()
     {
         if (enemyCounter < maxEnemys)
@@ -89,6 +93,7 @@ public class SpawnerController : MonoBehaviour
     }
 
 
+    //A Blue Circle Around the one Spwan Area - only relevant for development
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

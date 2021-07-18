@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-
+    //UI Elements
     public GameObject endscreen;
+    public GameObject timesUpText;
     Image timerBar;
+    
+    //Time Elements
     public float maxTime = 180f;
     float timeLeft;
-    public GameObject timesUpText;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        //UI Elements
         timesUpText.SetActive(false);
         timerBar = GetComponent<Image>();
-        timeLeft = maxTime;
-        Time.timeScale = 1;
+
+
+        timeLeft = maxTime; //timeleft starts with maxTime
+        Time.timeScale = 1; //as fast as "real" time 
         endscreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         //endscreen.SetActive(false);
     }
@@ -28,10 +34,11 @@ public class TimerScript : MonoBehaviour
     {
         if (timeLeft > 0)
         {
+            //timer count down
             timeLeft -= Time.deltaTime;
             timerBar.fillAmount = timeLeft / maxTime;
         }
-        else
+        else //Timer is over - UI Elemts get activated
         {
             timesUpText.SetActive(true);
             endscreen.SetActive(true);
